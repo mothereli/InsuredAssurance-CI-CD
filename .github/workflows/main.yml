@@ -33,7 +33,7 @@ jobs:
 
     # Step 4: Build with Maven
     - name: Build with Maven
-      run: run: mvn -B package --file app/pom.xml
+      run:  mvn -B package --file app/pom.xml
 
 
     # Step 5: Run tests

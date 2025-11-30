@@ -39,15 +39,15 @@ jobs:
     # Step 5: Run tests
     - name: Run tests
       run: mvn test
-    - name: Upload WAR via SSH
-      uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+    - name: Upload WAR via SCP
+      uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
         user: ${{ secrets.USERNAME }}
         pass: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        scp: |
-          ./target/*.war => /tmp/
+        source: "./target/*.war"
+        target: "/tmp/"
         last_ssh: |
           ls -lart /tmp
     - name: Invoke Jenkins Deployment Job

@@ -43,13 +43,11 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOST }}
-        user: ${{ secrets.USERNAME }}
-        pass: ${{ secrets.PASSWORD }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         source: "./target/*.war"
         target: "/tmp/"
-        last_ssh: |
-          ls -lart /tmp
     - name: Invoke Jenkins Deployment Job
       uses: appleboy/jenkins-action@master
       with:
